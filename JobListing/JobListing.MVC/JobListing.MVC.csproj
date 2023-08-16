@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JobListing.Core\JobListing.Core.csproj" />
     <ProjectReference Include="..\JobListing.Infrastructure\JobListing.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -1,3 +1,5 @@
+using JobListing.Core.Contracts;
+using JobListing.Core.Services;
 using JobListing.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +10,8 @@ builder.Services.AddDbContext<JobListingDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ITechnologyService, TechnologyService>();
 
 var app = builder.Build();
 

@@ -13,5 +13,9 @@ namespace JobListing.Infrastructure.Models
 
         [Required(AllowEmptyStrings = false)]
         public string Flag { get; set; } = null!;
+
+        public DateTime DateAdded { get; set; } = DateTime.UtcNow;
+
+        public bool IsDeleted { get; set; } = false;
     }
 }

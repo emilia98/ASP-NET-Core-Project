@@ -12,5 +12,9 @@ namespace JobListing.Infrastructure.Models
         public string Name { get; set; } = null!;
 
         public string? ImageUrl { get; set; }
+
+        public DateTime DateAdded { get; set; } = DateTime.UtcNow;
+
+        public bool IsDeleted { get; set; } = false;
     }
 }

@@ -1,4 +1,10 @@
+using JobListing.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<JobListingDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQLConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

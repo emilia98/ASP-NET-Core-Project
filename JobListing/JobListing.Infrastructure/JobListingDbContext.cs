@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JobListing.Infrastructure.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace JobListing.Infrastructure
 {
@@ -12,5 +8,9 @@ namespace JobListing.Infrastructure
         public JobListingDbContext(DbContextOptions<JobListingDbContext> options)
             : base(options)
         { }
+
+        public DbSet<Technology> Technologies { get; set; }
+
+        public DbSet<Language> Languages { get; set; }
     }
 }

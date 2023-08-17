@@ -1,13 +1,20 @@
 ﻿using JobListing.Infrastructure.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobListing.Infrastructure
 {
-    public class JobListingDbContext : DbContext
+    public class JobListingDbContext : IdentityDbContext<IdentityUser>
     {
         public JobListingDbContext(DbContextOptions<JobListingDbContext> options)
             : base(options)
         { }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
 
         public DbSet<Technology> Technologies { get; set; }
 

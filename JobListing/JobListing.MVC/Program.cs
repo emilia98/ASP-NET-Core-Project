@@ -3,13 +3,22 @@ using JobListing.Core.Services;
 using JobListing.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using JobListing.Infrastructure.Seeding;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<JobListingDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQLConnection")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 8;
+})
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<JobListingDbContext>();
 
 // Add services to the container.
@@ -23,7 +32,15 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-   
+    var services = app.Services;
+
+    using (var serviceScope = app.Services.CreateScope())
+    {
+        var dbContext = serviceScope.ServiceProvider.GetRequiredService<JobListingDbContext>();
+        dbContext.Database.Migrate();
+        new JobListingDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider)
+            .GetAwaiter().GetResult();
+    }
 } 
 else
 {

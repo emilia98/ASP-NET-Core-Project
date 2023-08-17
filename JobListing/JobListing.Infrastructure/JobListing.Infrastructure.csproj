@@ -21,4 +21,8 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.21" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JobListing.Common\JobListing.Common.csproj" />
+  </ItemGroup>
+
 </Project>

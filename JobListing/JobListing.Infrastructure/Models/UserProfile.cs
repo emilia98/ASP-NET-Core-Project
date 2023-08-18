@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JobListing.Infrastructure.Models
 {
-    [Index(nameof(UserId), IsUnique = true)]
     public class UserProfile
     {
         [Key]
@@ -28,5 +27,8 @@ namespace JobListing.Infrastructure.Models
 
         [ForeignKey(nameof(UserId))]
         public IdentityUser User { get; set; } = null!;
+
+        [Required]
+        public bool IsDeleted { get; set; } = false;
     }
 }

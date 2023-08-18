@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JobListing.Common\JobListing.Common.csproj" />
     <ProjectReference Include="..\JobListing.Core\JobListing.Core.csproj" />
     <ProjectReference Include="..\JobListing.Infrastructure\JobListing.Infrastructure.csproj" />
   </ItemGroup>

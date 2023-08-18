@@ -4,15 +4,23 @@ using JobListing.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using JobListing.Infrastructure.Seeding;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<JobListingDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQLConnection")));
 
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true ).AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<JobListingDbContext>();
+
+/*
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = true;
+    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedEmail = false;
+    options.SignIn.RequireConfirmedPhoneNumber = false;
     options.Password.RequireDigit = false;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
@@ -20,6 +28,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<JobListingDbContext>();
+*/
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -37,9 +46,17 @@ if (app.Environment.IsDevelopment())
     using (var serviceScope = app.Services.CreateScope())
     {
         var dbContext = serviceScope.ServiceProvider.GetRequiredService<JobListingDbContext>();
-        dbContext.Database.Migrate();
-        new JobListingDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider)
+        var db = (dbContext.Database.GetService<IRelationalDatabaseCreator>() as RelationalDatabaseCreator);
+        var dbExists = db?.Exists() ?? false;
+
+       // var migrations = dbContext.Database.GetAppliedMigrations();
+
+        if (!dbExists)
+        {
+            dbContext.Database.Migrate();
+            new JobListingDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider)
             .GetAwaiter().GetResult();
+        }
     }
 } 
 else
@@ -54,12 +71,28 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();;
+app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "Areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    endpoints.MapDefaultControllerRoute();
+    endpoints.MapRazorPages();
+});
+
+/*
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
+*/
 
 app.Run();

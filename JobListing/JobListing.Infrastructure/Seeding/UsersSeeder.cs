@@ -26,7 +26,10 @@ namespace JobListing.Infrastructure.Seeding
                         UserName = username,
                         Email = email,
                         NormalizedUserName = username.ToUpper(),
-                        NormalizedEmail = email.ToUpper()
+                        NormalizedEmail = email.ToUpper(),
+                        EmailConfirmed = true,
+                        PhoneNumberConfirmed = true,
+                        
                     }, password);
 
                 if (!result.Succeeded)

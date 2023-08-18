@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace JobListing.Infrastructure.Models
 {
     [Index(nameof(Bulstat), IsUnique = true)]
-    public class Company : IdentityUser
+    public class Company
     {
         [Key]
         public string Bulstat { get; set; } = null!;

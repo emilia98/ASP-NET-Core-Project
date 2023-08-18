@@ -19,5 +19,7 @@ namespace JobListing.Infrastructure
         public DbSet<Technology> Technologies { get; set; }
 
         public DbSet<Language> Languages { get; set; }
+
+        public DbSet<UserProfile> UserProfiles { get; set; }
     }
 }

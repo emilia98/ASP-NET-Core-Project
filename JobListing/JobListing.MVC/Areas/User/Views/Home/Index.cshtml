@@ -50,10 +50,13 @@
             </a>
         </div>
         <div class="user-action">
-            <a class="action-link" id="my-logout">
-                <span class="action-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
-                <span class="action-text">Logout</span>
-            </a>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="action-link" id="my-logout">
+                    <span class="action-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+                    <span class="action-text">Logout</span>
+                </button>
+            </form>
+            
         </div>
     </div>
 </div>

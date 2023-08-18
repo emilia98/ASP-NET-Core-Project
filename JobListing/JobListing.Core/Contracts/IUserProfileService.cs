@@ -11,5 +11,15 @@ namespace JobListing.Core.Contracts
         // Update User Profile
 
         // List User Profile
+
+        // List User Files
+
+        // Upload a user file
+
+        // List all User Applications
+
+        // List all User Saved Items
+
+        // Delete User Account
     }
 }

@@ -9,5 +9,6 @@ namespace JobListing.MVC.Areas.Admin.Controllers
     // [Authorize]
     public class AdminBaseController : Controller
     {
+
     }
 }

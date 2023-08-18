@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobListing.Infrastructure.Migrations
 {
     [DbContext(typeof(JobListingDbContext))]
-    [Migration("20230818120819_AddUserProfiles")]
+    [Migration("20230818142659_AddUserProfiles")]
     partial class AddUserProfiles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

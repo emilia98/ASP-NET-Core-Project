@@ -4,4 +4,59 @@
 @{
 }
 
-<h1>Hello, Company</h1>
+<div class="container">
+    <div class="user-card">
+        <div class="user-img">
+            <div class="user-img-container">
+                <img src="https://scontent.fsof4-1.fna.fbcdn.net/v/t39.30808-6/366904229_6550495251684194_4720808641816276429_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=zj4ZVlGoQLAAX9H7fZK&_nc_ht=scontent.fsof4-1.fna&oh=00_AfDauljhzQNHZpTmLQ5BDErew_ve8cd2B-wfC32CbCIIXg&oe=64E4EFCB" alt="user-image" />
+            </div>
+        </div>
+        <div class="user-data">
+            <div class="user-data-container">
+                <h2>Emilia Nedyalkova</h2>
+                <p>emilia_nedialkova@abv.bg</p>
+            </div>
+        </div>
+    </div>
+    <div class="user-actions">
+        <div class="user-action">
+            <a asp-area="Admin" asp-controller="Technology" asp-action="Index" class="action-link" id="admin-technologies">
+                <span class="action-icon"><i class="fa-brands fa-js"></i></span>
+                <span class="action-text">Technologies</span>
+            </a>
+        </div>
+        <div class="user-action">
+            <a class="action-link" id="admin-languages">
+                <span class="action-icon"><i class="fa-solid fa-language"></i></span>
+                <span class="action-text">Languages</span>
+            </a>
+        </div>
+        <div class="user-action">
+            <a class="action-link" id="admin-offers">
+                <span class="action-icon"><i class="fa-solid fa-list"></i></span>
+                <span class="action-text">Offers</span>
+            </a>
+        </div>
+        <div class="user-action">
+            <a class="action-link" id="admin-users">
+                <span class="action-icon"><i class="fa-solid fa-users"></i></span>
+                <span class="action-text">Users</span>
+            </a>
+        </div>
+        <div class="user-action">
+            <a class="action-link" id="admin-companies">
+                <span class="action-icon"><i class="fa-solid fa-building"></i></span>
+                <span class="action-text">Companies</span>
+            </a>
+        </div>
+        <div class="user-action">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="action-link" id="my-logout">
+                    <span class="action-icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+                    <span class="action-text">Logout</span>
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>

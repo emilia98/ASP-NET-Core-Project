@@ -20,7 +20,7 @@
     </div>
     <div class="user-actions">
         <div class="user-action">
-            <a class="action-link" id="my-profile">
+            <a asp-area="User" asp-controller="Profile" asp-action="Index" asp-route-username="@User?.Identity?.Name" class="action-link" id="my-profile">
                 <span class="action-icon"><i class="fa-regular fa-square-plus"></i></span>
                 <span class="action-text">My Profile</span>
             </a>

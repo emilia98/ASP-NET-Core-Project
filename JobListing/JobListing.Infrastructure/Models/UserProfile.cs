@@ -18,9 +18,11 @@ namespace JobListing.Infrastructure.Models
         [StringLength(30)]
         public string LastName { get; set; } = null!;
 
-        [Required]
         [StringLength(150)]
-        public string ImageUrl { get; set; } = null!;
+        public string? ImageUrl { get; set; }
+
+        [StringLength(150)]
+        public string? LinkedInUrl { get; set; }
 
         [Required]
         public string UserId { get; set; } = null!;

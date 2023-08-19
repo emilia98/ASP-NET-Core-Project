@@ -33,7 +33,8 @@ namespace JobListing.Infrastructure.Seeding
             {
                 new RolesSeeder(),
                 new UsersSeeder(),
-                new UsersToRolesSeeder()
+                new UsersToRolesSeeder(),
+                new UsersToProfilesSeeder()
             };
 
             foreach (var seeder in seeders)

@@ -15,7 +15,8 @@ div.user-actions div.user-action {
   background: #f4f4f4;
 }
 
-div.user-actions div.user-action a, div.user-actions div.user-action button {
+div.user-actions div.user-action a,
+div.user-actions div.user-action button {
   display: flex;
   width: 100%;
   height: 100%;
@@ -30,18 +31,19 @@ div.user-actions div.user-action a, div.user-actions div.user-action button {
   color: #555555;
 }
 
-    div.user-actions div.user-action form {
-        width: 100%;
-        height: 100%;
-    }
+div.user-actions div.user-action form {
+  width: 100%;
+  height: 100%;
+}
 
-        div.user-actions div.user-action form button {
-            border: none;
-        }
+div.user-actions div.user-action form button {
+  border: none;
+}
 
-    div.user-actions div.user-action a span.action-icon, div.user-actions div.user-action button span.action-icon {
-        font-size: 30px;
-    }
+div.user-actions div.user-action a span.action-icon,
+div.user-actions div.user-action button span.action-icon {
+  font-size: 30px;
+}
 
 div.user-card {
   display: flex;
@@ -76,4 +78,134 @@ div.user-card div.user-data div.user-data-container p {
   font-size: 16px;
   font-weight: 400;
   color: #555555;
+}
+
+div.profile-container {
+  max-width: 920px;
+  margin: 30px auto;
+  display: block;
+}
+
+div.profile-container h1 {
+  margin: 30px 0;
+}
+
+div.profile-container p {
+  margin: 0;
+  padding: 0;
+}
+
+div.profile-container div.profile-card {
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px 2px #e7e7e7;
+}
+
+div.profile-container div.profile-card div.profile-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+div.profile-container
+  div.profile-card
+  div.profile-card-header
+  div.profile-card-image {
+  text-align: left;
+  width: 45%;
+  max-width: 300px;
+}
+
+div.profile-container hr {
+  height: 2px;
+  color: lightgrey;
+}
+
+div.profile-container div.profile-card div.profile-card-body {
+  padding: 20px;
+}
+
+div.profile-container
+  div.profile-card
+  div.profile-card-header
+  div.profile-card-image
+  img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+div.profile-container
+  div.profile-card
+  div.profile-card-header
+  div.profile-card-data {
+  width: 55%;
+}
+
+div.profile-container
+  div.profile-card
+  div.profile-card-header
+  div.profile-card-data
+  p.name {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+div.profile-container
+  div.profile-card
+  div.profile-card-data
+  div.profile-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+div.profile-container
+  div.profile-card
+  div.profile-card-data
+  div.profile-contacts
+  div.contact {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div.profile-container
+  div.profile-card
+  div.profile-card-data
+  div.profile-contacts
+  div.contact
+  span.icon {
+  font-size: 20px;
+  color: #b042ff;
+}
+
+div.profile-container
+  div.profile-card
+  div.profile-card-data
+  div.profile-contacts
+  div.contact
+  span.data {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+div.profile-container div.profile-card div.profile-card-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+div.profile-container div.profile-card div.profile-card-footer {
+  text-align: center;
+}
+
+div.profile-container div.profile-card div.profile-card-footer a {
+  max-width: 200px;
 }

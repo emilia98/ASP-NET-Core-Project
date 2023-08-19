@@ -1,0 +1,54 @@
+﻿@model FullUserProfileViewModel
+
+@{
+    ViewBag.Title = "My profile";
+}
+
+
+
+<div class="container">
+    <div class="profile-container">
+        <h1 class="text-center">@ViewBag.Title</h1>
+
+        <div class="profile-card">
+            <div class="profile-card-header">
+                <div class="profile-card-image">
+                    <img src="https://scontent.fsof4-1.fna.fbcdn.net/v/t39.30808-6/366904229_6550495251684194_4720808641816276429_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=zj4ZVlGoQLAAX9H7fZK&_nc_ht=scontent.fsof4-1.fna&oh=00_AfDauljhzQNHZpTmLQ5BDErew_ve8cd2B-wfC32CbCIIXg&oe=64E4EFCB" alt="@(Model.Username)-profile-img" />
+                </div>
+                <div class="profile-card-data">
+                    <div class="user-data">
+                        <p class="name">@(string.Join(" ", new List<string> { Model.FirstName, Model.LastName }))</p>
+                        <p class="username">@Model.Username</p>
+                    </div>
+                    <div class="profile-contacts">
+                        <div class="email contact">
+                            <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                            <span class="email data">@(Model.Email)</span>
+                        </div>
+                        <div class="phone contact">
+                            <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                            <span class="phone data">@(Model.PhoneNumber ?? "No phone number provided")</span>
+                        </div>
+                        <div class="linkedin contact">
+                            <span class="icon"><i class="fa-brands fa-linkedin"></i></span>
+                            <span class="linkedin data">@(Model.LinkedInUrl ?? "No LinkedIn provided")</span>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="profile-card-body">
+                <div class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula libero sed maximus congue. Donec velit tortor, porta quis lorem commodo, dictum mollis urna. Pellentesque quis augue quis felis auctor pellentesque quis a felis. Pellentesque massa quam, efficitur sit amet enim vel, vulputate blandit velit. Aliquam lacinia, massa id semper dictum, est risus fringilla enim, a facilisis justo neque ac turpis. Ut congue ipsum orci, at laoreet sem feugiat quis.
+                </div>
+                
+            </div>
+            <div class="profile-card-footer">
+                <a class="btn btn-primary-purple">Update Profile</a>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobListing.Core.Models.ViewModels.UserProfile;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace JobListing.Core.Contracts
         // Update User Profile
 
         // List User Profile
+        Task<FullUserProfileViewModel?> GetUserProfileAsync(string id);
 
         // List User Files
 

@@ -221,6 +221,6 @@ div.update-profile-container form div.group-form hr {
     margin: 20px;
 }
 
-div.update-profile-container form button {
+div.update-profile-container form button[type="submit"] {
     margin: 45px auto 30px;
 }

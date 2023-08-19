@@ -1,7 +1,7 @@
-﻿@model FullUserProfileViewModel
+﻿@model FullCompanyProfileViewModel
 
 @{
-    ViewBag.Title = "My profile";
+    ViewBag.Title = "Company profile";
 }
 
 
@@ -17,7 +17,7 @@
                 </div>
                 <div class="profile-card-data">
                     <div class="user-data">
-                        <p class="name">@(string.Join(" ", new List<string> { Model.FirstName, Model.LastName }))</p>
+                        <p class="name">@Model.Name</p>
                         <p class="username">@Model.Username</p>
                     </div>
                     <div class="profile-contacts">
@@ -29,12 +29,18 @@
                             <span class="icon"><i class="fa-solid fa-phone"></i></span>
                             <span class="phone data">@(Model.PhoneNumber ?? "No phone number provided")</span>
                         </div>
+                        <div class="website contact">
+                            <span class="icon"><i class="fa-solid fa-globe"></i></span>
+                            <span class="website data">@(Model.WebsiteUrl ?? "No Website provided")</span>
+                        </div>
                         <div class="linkedin contact">
                             <span class="icon"><i class="fa-brands fa-linkedin"></i></span>
                             <span class="linkedin data">@(Model.LinkedInUrl ?? "No LinkedIn provided")</span>
                         </div>
-                        
-                        
+                        <div class="facebook contact">
+                            <span class="icon"><i class="fa-brands fa-square-facebook"></i></span>
+                            <span class="facebook data">@(Model.FacebookUrl ?? "No Facebook provided")</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,12 +56,11 @@
                         @Model.Description
                     }
                 </div>
-                
             </div>
             <div class="profile-card-footer">
                 <a asp-area="Company" asp-controller="Profile" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary-purple">Update Profile</a>
             </div>
         </div>
     </div>
-    
+
 </div>

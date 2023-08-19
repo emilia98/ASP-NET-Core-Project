@@ -21,6 +21,7 @@ namespace JobListing.Infrastructure.Seeding
             await SeedUserToUserProfile(dbContext, userManager, "admin", "Admin", "Admin");
             await SeedUserToUserProfile(dbContext, userManager, "emilia", "Emilia", "");
             // seed company user profile
+            await SeedUserToCompanyProfile(dbContext, userManager, "apple", "Apple", "123456789");
         }
 
 
@@ -48,6 +49,30 @@ namespace JobListing.Infrastructure.Seeding
                 LinkedInUrl = null,
                 IsDeleted = false,
                 UserId = user.Id
+            });
+        }
+
+        private static async Task SeedUserToCompanyProfile(JobListingDbContext dbContext, UserManager<IdentityUser> userManager, string userName, string companyName, string bulstat)
+        {
+            var user = await userManager.FindByNameAsync(userName);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            var exists = dbContext.Companies.Any(c => c.CompanyUserId == user.Id);
+
+            if (exists)
+            {
+                return;
+            }
+
+            var result = await dbContext.Companies.AddAsync(new Company
+            {
+                Name = companyName,
+                Bulstat = bulstat,
+                CompanyUserId = user.Id
             });
         }
     }

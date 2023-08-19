@@ -28,16 +28,18 @@ namespace JobListing.Infrastructure.Models
         [MaxLength(100)]
         public string Name { get; set; } = null!;
 
-        [Required]
         [MaxLength(500)]
-        public string Description { get; set; } = null!;
+        public string? Description { get; set; }
 
         public string? LogoUrl { get; set; }
 
         // Website Url ?
+        public string? WebsiteUrl { get; set; }
 
         // LinkedIn Url ?
+        public string? LinkedInUrl { get; set; }
 
         // Facebook Url ?
+        public string? FacebookUrl { get; set; }
     }
 }

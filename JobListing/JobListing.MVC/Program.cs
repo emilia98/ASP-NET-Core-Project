@@ -37,6 +37,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ITechnologyService, TechnologyService>();
 builder.Services.AddScoped<ILanguageService, LanguageService>();
 builder.Services.AddScoped<IUserProfileService, UserProfileService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
 
 
 var app = builder.Build();

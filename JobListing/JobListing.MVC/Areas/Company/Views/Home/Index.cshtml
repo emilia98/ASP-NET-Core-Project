@@ -20,9 +20,9 @@
     </div>
     <div class="user-actions">
         <div class="user-action">
-            <a asp-area="Admin" asp-controller="Technology" asp-action="Index" class="action-link" id="admin-technologies">
-                <span class="action-icon"><i class="fa-brands fa-js"></i></span>
-                <span class="action-text">Technologies</span>
+            <a asp-area="Company" asp-controller="Profile" asp-action="Index" asp-route-username="@User?.Identity?.Name" class="action-link" id="company-profile">
+                <span class="action-icon"<i class="fa-solid fa-id-card"></i></span>
+                <span class="action-text">Company Profile</span>
             </a>
         </div>
         <div class="user-action">

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Models\ViewModels\Language\" />
-    <Folder Include="Models\ViewModels\Company\" />
     <Folder Include="Models\ViewModels\User\" />
   </ItemGroup>
 

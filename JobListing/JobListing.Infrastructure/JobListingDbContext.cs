@@ -22,8 +22,6 @@ namespace JobListing.Infrastructure
 
         public DbSet<Company> Companies { get; set; }
 
-        public DbSet<CompanyProfile> CompanyProfiles { get; set; }
-
         public DbSet<UserProfile> UserProfiles { get; set; }
     }
 }

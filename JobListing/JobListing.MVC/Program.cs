@@ -16,13 +16,6 @@ builder.Services.AddDbContext<JobListingDbContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true ).AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<JobListingDbContext>();
 
-//builder.Services.AddIdentityCore<User>().AddEntityFrameworkStores<JobListingDbContext>();
-//builder.Services.AddIdentityCore<Company>().AddEntityFrameworkStores<JobListingDbContext>();
-
-// builder.Services.AddIdentityCore<Company>().AddEntityFrameworkStores<JobListingDbContext>();
-
-
-
 /*
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {

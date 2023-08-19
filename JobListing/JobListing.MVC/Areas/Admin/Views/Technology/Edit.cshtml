@@ -1,0 +1,30 @@
+﻿@model TechnologyEditInputModel;
+
+@{
+    ViewBag.Title = "Edit Technology";
+}
+
+<div class="container">
+    <div class="add-form">
+        <h1 class="text-center">@ViewBag.Title - @Model.Name</h1>
+        <div class="card">
+            <div class="card-body">
+                <form method="post" asp-area="Admin" asp-controller="Technology" asp-action="Edit" asp-route-id=@Model.Id>
+                    <div class="form-floating mb-3">
+                        <input asp-for="@Model.Name" class="form-control" placeholder="example C#" />
+                        <label asp-for="@Model.Name">Name</label>
+                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="@Model.ImageUrl" class="form-control" placeholder="Image URL" />
+                        <label asp-for="@Model.ImageUrl">Image URL</label>
+                        <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary-purple">Edit</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>

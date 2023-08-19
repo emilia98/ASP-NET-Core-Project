@@ -28,9 +28,59 @@ namespace JobListing.Core.Services
             await dbContext.SaveChangesAsync();
         }
 
+
+        // public async Task<bool> DeleteAsync(int id, bool hardDelete = false)
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var technology = await dbContext.Technologies.FindAsync(id);
+
+            if (technology != null)
+            {
+                /*
+                if (technology.IsDeleted && hardDelete)
+                {
+                    dbContext.Technologies.Remove(technology);
+                }
+                else
+                {
+                    technology.IsDeleted = true;
+                }*/
+
+                technology.IsDeleted = !technology.IsDeleted;
+                await dbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> EditAsync(int id, TechnologyEditInputModel model)
+        {
+            var technology = await dbContext.Technologies.FindAsync(id);
+
+            if (technology != null && technology.IsDeleted == false)
+            {
+                technology.Name = model.Name;
+                technology.ImageUrl = model.ImageUrl;
+
+                await dbContext.SaveChangesAsync();
+
+                return true;
+            }
+
+            return false;
+        }
+
         public async Task<IEnumerable<TechnologyViewModel>> GetAllAsync(bool withDeleted = false)
         {
-            return await dbContext.Technologies.Where(t => t.IsDeleted == !withDeleted)
+            var technologies = dbContext.Technologies.AsNoTracking();
+
+            if (!withDeleted)
+            {
+                technologies = technologies.Where(t => t.IsDeleted == false);
+            }
+
+            return await technologies
                 .Select(t => new TechnologyViewModel
                 {
                     Id = t.Id,
@@ -38,6 +88,34 @@ namespace JobListing.Core.Services
                     ImageUrl = t.ImageUrl,
                     IsDeleted = t.IsDeleted
                 }).ToListAsync();
+        }
+
+        public async Task<TechnologyViewModel?> GetBtIdAsync(int id, bool withDeleted = false)
+        {
+            var technologies = dbContext.Technologies.AsNoTracking();
+
+            if (!withDeleted)
+            {
+                technologies = technologies.Where(t => t.IsDeleted == false);
+            }
+
+            return await technologies
+                .Where(t => t.Id == id)
+                .Select(t => new TechnologyViewModel { Id = t.Id, Name = t.Name, ImageUrl = t.ImageUrl })
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<TechnologyEditInputModel?> GetEditModelAsync(int id)
+        {
+            return await dbContext.Technologies.Where(t => t.IsDeleted == false && t.Id == id)
+                .Select(t => new TechnologyEditInputModel
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                    ImageUrl = t.ImageUrl
+                })
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
         }
     }
 }

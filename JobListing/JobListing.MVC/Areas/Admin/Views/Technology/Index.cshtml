@@ -1,8 +1,8 @@
-﻿
+﻿@model IEnumerable<TechnologyViewModel>
+
 @{
     ViewBag.Title = "Technologies";
 }
-
 
 <div class="container">
     <div class="list-view-container">
@@ -21,6 +21,26 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var technology in Model)
+                    {
+                        <tr>
+                            <th scope="row">@technology.Id</th>
+                            <td class="Name">@technology.Name</td>
+                            <td class="image"><img src="@technology.ImageUrl" /></td>
+                            <td class="actions">
+                                <div class="list-action-container">
+                                    <a asp-area="Admin" asp-controller="Technology" asp-action="Edit" asp-route-id="@technology.Id" class="edit">Edit <i class="fa-solid fa-pen"></i></a>
+                                    <form asp-area="Admin" asp-controller="Technology" asp-action="Delete" asp-route-id="@technology.Id" class="delete" method="post">
+                                        <button type="submit">
+                                            @(@technology.IsDeleted ? "Recover" : "Delete")
+                                            <span><i class="fa-solid fa-trash-can"></i></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    <!--
                     <tr>
                         <th scope="row">1</th>
                         <td class="Name">JavaScript</td>
@@ -48,6 +68,7 @@
                         <td colspan="2">Larry the Bird</td>
                         <td>@@twitter</td>
                     </tr>
+                    -->
                 </tbody>
             </table>
         </div>

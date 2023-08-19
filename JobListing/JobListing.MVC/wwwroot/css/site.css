@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url("./reset.css");
 @import url("./user-profile.css");
+@import url("./forms.css");
+@import url("./listing.css");
 
 html {
   font-size: 14px;
@@ -21,3 +22,21 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 60px;
 }
+
+.btn.btn-primary-purple {
+    display: block;
+    min-width: 250px;
+    padding: 10px;
+    margin: 20px auto 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #b042ff;
+    border-color: #b042ff;
+}
+
+    .btn.btn-primary-purple:hover {
+        color: #fff;
+        background-color: #9300ff;
+        border-color: #9300ff;
+    }

@@ -1,0 +1,66 @@
+﻿
+
+div.list-view-container {
+    max-width: 780px;
+    margin: 30px auto;
+}
+
+    div.list-view-container div.list-view-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 48px;
+        font-weight: 500;
+        margin: 50px auto;
+        gap: 30px;
+    }
+
+        div.list-view-container div.list-view-header h1 {
+            font-size: 48px;
+            font-weight: 500;
+        }
+
+        div.list-view-container div.list-view-header a {
+            min-width: 150px;
+            margin: 0 20px;
+        }
+
+    div.list-view-container div.list-view-body table thead th {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    div.list-view-container div.list-view-body table tbody td.name {
+        font-weight: 500;
+    }
+
+    div.list-view-container div.list-view-body table tbody td.image img {
+        width: 35px;
+        height: 35px;
+    }
+
+    div.list-view-container div.list-view-body table tbody td.actions div.list-action-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+        div.list-view-container div.list-view-body table tbody td.actions div.list-action-container a.edit {
+            border: 1px solid #b042ff;
+            padding: 10px;
+            border-radius: 7px;
+            color: #b042ff;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        div.list-view-container div.list-view-body table tbody td.actions div.list-action-container form.delete button {
+            border: none;
+            background: #b042ff;
+            padding: 10px;
+            color: #FFF;
+            border-radius: 7px;
+        }

@@ -1,0 +1,14 @@
+﻿
+
+div.add-form {
+    max-width: 780px;
+    margin: 30px auto;
+    width: 90%;
+}
+
+    div.add-form h1 {
+        font-size: 48px;
+        font-weight: 500;
+        margin: 50px auto;
+    }
+

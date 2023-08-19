@@ -9,8 +9,11 @@
   <ItemGroup>
     <Folder Include="Models\ViewModels\Language\" />
     <Folder Include="Models\ViewModels\Company\" />
-    <Folder Include="Models\InputModels\" />
     <Folder Include="Models\ViewModels\User\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JobListing.Infrastructure\JobListing.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

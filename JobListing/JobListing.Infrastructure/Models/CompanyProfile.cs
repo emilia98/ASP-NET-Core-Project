@@ -16,7 +16,13 @@ namespace JobListing.Infrastructure.Models
         [MaxLength(500)]
         public string Description { get; set; } = null!;
 
-        public string LogoUrl { get; set; }
+        public string? LogoUrl { get; set; }
+
+        // Website Url ?
+
+        // LinkedIn Url ?
+         
+        // Facebook Url ?
 
         [Required]
         public int CompanyId { get; set; }

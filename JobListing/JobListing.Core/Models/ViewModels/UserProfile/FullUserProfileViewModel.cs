@@ -18,6 +18,8 @@
 
         public string? PhoneNumber { get; set; }
 
-        public bool IsDeleted { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;        
+
+        public string? Description { get; set; }
     }
 }

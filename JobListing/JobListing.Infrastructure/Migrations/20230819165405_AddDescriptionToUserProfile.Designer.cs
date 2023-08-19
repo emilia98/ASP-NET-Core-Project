@@ -4,6 +4,7 @@ using JobListing.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobListing.Infrastructure.Migrations
 {
     [DbContext(typeof(JobListingDbContext))]
-    partial class JobListingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230819165405_AddDescriptionToUserProfile")]
+    partial class AddDescriptionToUserProfile
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

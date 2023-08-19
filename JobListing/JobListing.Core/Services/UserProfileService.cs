@@ -1,4 +1,5 @@
 ﻿using JobListing.Core.Contracts;
+using JobListing.Core.Models.InputModels.UserProfile;
 using JobListing.Core.Models.ViewModels.UserProfile;
 using JobListing.Infrastructure;
 using Microsoft.AspNetCore.Identity;
@@ -18,6 +19,35 @@ namespace JobListing.Core.Services
         public UserProfileService(JobListingDbContext dbContext)
         {
             this.dbContext = dbContext;
+        }
+
+        public async Task<UpdateUserProfileInputModel?> GetUpdateUserProfileModel(string id)
+        {
+            var user = await dbContext.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            var userProfile = await dbContext.UserProfiles.Where(up => up.UserId == user.Id)
+                .Select(up => new UpdateUserProfileInputModel
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    FirstName = up.FirstName,
+                    LastName = up.LastName,
+                    ImageUrl = up.ImageUrl,
+                    LinkedInUrl = up.LinkedInUrl,
+                    IsDeleted = up.IsDeleted,
+                    Description = up.Description
+
+                })
+                .AsNoTracking().FirstOrDefaultAsync();
+
+            return userProfile;
         }
 
         public async Task GetUserAsync(string id)
@@ -59,10 +89,38 @@ namespace JobListing.Core.Services
                 LastName = userProfile.LastName,
                 ImageUrl = userProfile.ImageUrl,
                 LinkedInUrl = userProfile.LinkedInUrl,
-                IsDeleted = userProfile.IsDeleted
+                IsDeleted = userProfile.IsDeleted,
+                Description = userProfile.Description
             };
 
             return model;
+        }
+
+        public async Task<bool> UpdateUserProfileAsync(string id, UpdateUserProfileInputModel model)
+        {
+            var user = await dbContext.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            var userProfile = await dbContext.UserProfiles.Where(up => up.UserId == id).FirstOrDefaultAsync();
+
+            if (userProfile == null || userProfile.IsDeleted)
+            {
+                return false;
+            }
+
+            userProfile.FirstName = model.FirstName;
+            userProfile.LastName = model.LastName;
+            userProfile.ImageUrl = model.ImageUrl;
+            userProfile.LinkedInUrl = model.LinkedInUrl;
+            userProfile.Description = model.Description;
+            user.PhoneNumber = model.PhoneNumber;
+
+            await dbContext.SaveChangesAsync();
+            return true;
         }
     }
 }

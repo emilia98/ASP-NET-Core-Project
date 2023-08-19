@@ -209,3 +209,18 @@ div.profile-container div.profile-card div.profile-card-footer {
 div.profile-container div.profile-card div.profile-card-footer a {
   max-width: 200px;
 }
+
+div.update-profile-container form div.group-form h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+div.update-profile-container form div.group-form hr {
+    height: 2px;
+    color: lightgrey;
+    margin: 20px;
+}
+
+div.update-profile-container form button {
+    margin: 45px auto 30px;
+}

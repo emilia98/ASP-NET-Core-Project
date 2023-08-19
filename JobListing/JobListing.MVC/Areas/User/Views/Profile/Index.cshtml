@@ -41,12 +41,19 @@
             <hr />
             <div class="profile-card-body">
                 <div class="description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula libero sed maximus congue. Donec velit tortor, porta quis lorem commodo, dictum mollis urna. Pellentesque quis augue quis felis auctor pellentesque quis a felis. Pellentesque massa quam, efficitur sit amet enim vel, vulputate blandit velit. Aliquam lacinia, massa id semper dictum, est risus fringilla enim, a facilisis justo neque ac turpis. Ut congue ipsum orci, at laoreet sem feugiat quis.
+                    @if (string.IsNullOrEmpty(Model.Description))
+                    {
+                        <h3 class="text-center">No Description provided</h3>
+                    }
+                    else
+                    {
+                        @Model.Description
+                    }
                 </div>
                 
             </div>
             <div class="profile-card-footer">
-                <a class="btn btn-primary-purple">Update Profile</a>
+                <a asp-area="User" asp-controller="Profile" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary-purple">Update Profile</a>
             </div>
         </div>
     </div>

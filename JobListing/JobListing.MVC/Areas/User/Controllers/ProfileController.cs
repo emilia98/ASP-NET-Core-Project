@@ -1,4 +1,6 @@
 ﻿using JobListing.Core.Contracts;
+using JobListing.Core.Models.InputModels.UserProfile;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobListing.MVC.Areas.User.Controllers
@@ -30,6 +32,50 @@ namespace JobListing.MVC.Areas.User.Controllers
             var model = await userProfileService.GetUserProfileAsync(userId);
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            var userId = GetUserId();
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return RedirectToAction(RedirectUrl);
+            }
+
+            var model = await userProfileService.GetUpdateUserProfileModel(id);
+
+            if (model == null)
+            { 
+                return RedirectToAction(nameof(Index));
+            }
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string id, UpdateUserProfileInputModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var currentUserId = GetUserId();
+
+            if (currentUserId != id)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            var result = await userProfileService.UpdateUserProfileAsync(id, model);
+
+            if (!result)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction("");
         }
 
 

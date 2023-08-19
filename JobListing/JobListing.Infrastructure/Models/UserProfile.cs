@@ -32,5 +32,8 @@ namespace JobListing.Infrastructure.Models
 
         [Required]
         public bool IsDeleted { get; set; } = false;
+
+        [StringLength(500)]
+        public string? Description { get; set; }
     }
 }

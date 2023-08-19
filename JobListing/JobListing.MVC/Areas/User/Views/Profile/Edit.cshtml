@@ -1,0 +1,90 @@
+﻿@model UpdateUserProfileInputModel
+
+@{
+    ViewBag.Title = "Update Profile";
+}
+
+<div class="container">
+    <div class="update-profile-container">
+        <h1 class="text-center">@ViewBag.Title</h1>
+        <div class="card">
+            <div class="card-body">
+                <form method="post" asp-area="User" asp-controller="Profile" asp-action="Edit" asp-route-id="@Model.Id">
+                    <div class="group-form">
+                        <h3>Account Info</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="@Model.UserName" class="form-control" placeholder="john.123" readonly aria-label="readonly input example" />
+                                    <label asp-for="@Model.UserName">UserName</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="@Model.Email" class="form-control" placeholder="hohn@example.com" readonly aria-label="readonly input example" />
+                                    <label asp-for="@Model.Email">Email</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="group-form">
+                        <h3>User Info</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="@Model.FirstName" class="form-control" placeholder="John" />
+                                    <label asp-for="@Model.FirstName">First Name</label>
+                                    <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="@Model.LastName" class="form-control" placeholder="Turner" />
+                                    <label asp-for="@Model.LastName">Last Name</label>
+                                    <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="@Model.ImageUrl" class="form-control" placeholder="John" />
+                            <label asp-for="@Model.ImageUrl">Image URL</label>
+                            <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="group-form">
+                        <h3>Contacts Info</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="@Model.PhoneNumber" class="form-control" placeholder="John" />
+                                    <label asp-for="@Model.PhoneNumber">Phone Number</label>
+                                    <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input asp-for="@Model.LinkedInUrl" class="form-control" placeholder="Turner" />
+                                    <label asp-for="@Model.LinkedInUrl"><i class="fa-brands fa-linkedin"></i> LinkedIn URL</label>
+                                    <span asp-validation-for="@Model.LinkedInUrl" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="group-form">
+                        <h3>Biography</h3>
+                        <div class="form-floating mb-3">
+                            <textarea asp-for="@Model.Description" class="form-control" placeholder="I'm a software developer..."></textarea>
+                            <label asp-for="@Model.Description">Description</label>
+                            <span asp-validation-for="@Model.Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary-purple">Add</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

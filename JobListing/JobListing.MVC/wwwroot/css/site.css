@@ -2,20 +2,21 @@
 @import url("./user-profile.css");
 @import url("./forms.css");
 @import url("./listing.css");
+@import url("./jobs.css");
 
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -23,20 +24,44 @@ body {
     margin-bottom: 60px;
 }
 
-.btn.btn-primary-purple {
+.btn.btn-primary-purple, .btn.btn-primary-purple-outline {
     display: block;
     min-width: 250px;
     padding: 10px;
     margin: 20px auto 10px;
     font-size: 16px;
     font-weight: 600;
+}
+
+.btn.btn-primary-purple {
     color: #fff;
     background-color: #b042ff;
     border-color: #b042ff;
 }
 
-    .btn.btn-primary-purple:hover {
-        color: #fff;
-        background-color: #9300ff;
-        border-color: #9300ff;
+.btn.btn-primary-purple-outline {
+    color: #b042ff;
+    background-color: #fff;
+    border-color: #b042ff;
+}
+
+.btn.btn-primary-purple:hover {
+    color: #fff;
+    background-color: #9300ff;
+    border-color: #9300ff;
+}
+
+.btn.btn-primary-purple-outline:hover {
+    color: #9300ff;
+    background-color: #fff;
+    border-color: #9300ff;
+}
+
+
+select.multiple-select {
+    max-width: 300px;
+}
+
+    select.multiple-select option {
+        padding: 10px;
     }

@@ -21,6 +21,15 @@ namespace JobListing.Core.Services
             this.dbContext = dbContext;
         }
 
+        public async Task<int?> GetCompanyId(string id)
+        {
+            var companyProfile = await dbContext.Companies
+                .Where(c => c.CompanyUserId == id)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+            return companyProfile?.Id;
+        }
+
         public async Task<FullCompanyProfileViewModel?> GetCompanyProfileAsync(string id)
         {
             var user = await dbContext.Users.FindAsync(id);

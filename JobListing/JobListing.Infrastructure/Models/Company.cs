@@ -33,13 +33,12 @@ namespace JobListing.Infrastructure.Models
 
         public string? LogoUrl { get; set; }
 
-        // Website Url ?
         public string? WebsiteUrl { get; set; }
 
-        // LinkedIn Url ?
         public string? LinkedInUrl { get; set; }
 
-        // Facebook Url ?
         public string? FacebookUrl { get; set; }
+
+        public ICollection<Job> Jobs { get; set; } = new List<Job>();
     }
 }

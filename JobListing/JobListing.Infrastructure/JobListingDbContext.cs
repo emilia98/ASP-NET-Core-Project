@@ -13,6 +13,9 @@ namespace JobListing.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<JobTechnology>()
+                .HasKey(x => new { x.JobId, x.TechnologyId });
+
             base.OnModelCreating(builder);
         }
 
@@ -23,5 +26,9 @@ namespace JobListing.Infrastructure
         public DbSet<Company> Companies { get; set; }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public DbSet<Job> Jobs { get; set; }
+
+        public DbSet<JobTechnology> JobsTechnologies { get; set; }
     }
 }

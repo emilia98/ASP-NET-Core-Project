@@ -4,6 +4,7 @@ using JobListing.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobListing.Infrastructure.Migrations
 {
     [DbContext(typeof(JobListingDbContext))]
-    partial class JobListingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230819204436_AddJobModel")]
+    partial class AddJobModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,21 +98,6 @@ namespace JobListing.Infrastructure.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Jobs");
-                });
-
-            modelBuilder.Entity("JobListing.Infrastructure.Models.JobTechnology", b =>
-                {
-                    b.Property<int>("JobId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TechnologyId")
-                        .HasColumnType("int");
-
-                    b.HasKey("JobId", "TechnologyId");
-
-                    b.HasIndex("TechnologyId");
-
-                    b.ToTable("JobsTechnologies");
                 });
 
             modelBuilder.Entity("JobListing.Infrastructure.Models.Language", b =>
@@ -439,25 +426,6 @@ namespace JobListing.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("JobListing.Infrastructure.Models.JobTechnology", b =>
-                {
-                    b.HasOne("JobListing.Infrastructure.Models.Job", "Job")
-                        .WithMany()
-                        .HasForeignKey("JobId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JobListing.Infrastructure.Models.Technology", "Technology")
-                        .WithMany()
-                        .HasForeignKey("TechnologyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Job");
-
-                    b.Navigation("Technology");
                 });
 
             modelBuilder.Entity("JobListing.Infrastructure.Models.Technology", b =>

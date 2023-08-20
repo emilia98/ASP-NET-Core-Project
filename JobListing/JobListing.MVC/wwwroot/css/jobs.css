@@ -1,0 +1,71 @@
+﻿
+
+div.job-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+}
+
+    div.job-container h1 {
+        margin: 35px auto;
+    }
+
+    div.job-container div.job-list-container {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        align-items: center;
+    }
+
+        div.job-container div.job-list-container div.job-col {
+            padding: 20px;
+            width: 33.3%;
+            max-width: 300px;
+        }
+
+            div.job-container div.job-list-container div.job-col h3 {
+                font-size: 24px;
+            }
+
+
+            div.job-container div.job-list-container div.job-col ul {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                gap: 5px;
+                justify-content: flex-start;
+                padding-left: 0px;
+                align-items: center;
+                margin-bottom: 0px;
+                margin-top: 5px;
+            }
+
+                div.job-container div.job-list-container div.job-col ul li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                    div.job-container div.job-list-container div.job-col ul li span.tech-img img {
+                        width: 25px;
+                        height: 25px;
+                    }
+
+            div.job-container div.job-list-container div.job-col div.company-job {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                gap: 10px;
+            }
+
+                div.job-container div.job-list-container div.job-col div.company-job span.company-img img {
+                    width: 35px;
+                    height: 35px;
+                    object-fit: contain;
+                }
+
+                div.job-container div.job-list-container div.job-col div.company-job span.company-name {
+                    font-weight: 600;
+                    font-size: 16px;
+                }

@@ -1,8 +1,45 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<JobViewModel>
+
+@{
+    ViewBag.Title = "Company Jobs";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="job-container">
+        <h1 class="text-center">@ViewBag.Title</h1>
+        <div class="job-list-container">
+            @foreach (var job in Model)
+            {
+                <div class="job-col job-card card">
+                    <h3>@job.Title</h3>
+                    <ul>
+                        @foreach (var technology in job.JobTechnologies)
+                        {
+                            <li class="job-technology">
+                                <span class="tech-img"><img src="@technology.ImageUrl" /></span>
+                            </li>
+                        }
+                    </ul>
+                    <div class="company-job">
+                        <span class="company-img">
+                            <img src="@job.CompanyLogo" alt="company-@job.CompanyName" />
+                        </span>
+                        <span class="company-name">
+                            @job.CompanyName
+                        </span>
+                    </div>
+                    <hr />
+                    <div class="job-actions">
+                        <a asp-area="Company" asp-controller="Job" asp-action="Preview" asp-route-id="@job.Id" class="btn btn-primary-purple-outline">Preview</a>
+                        @if (job.CompanyUserId == ViewData["CurrentUserId"] as string)
+                        {
+                            <a asp-area="Company" asp-controller="Job" asp-action="Edit" asp-route-id="@job.Id" class="btn btn-primary-purple">Edit</a>
+                        }
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
 </div>

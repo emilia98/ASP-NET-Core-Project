@@ -7,6 +7,8 @@ namespace JobListing.Core.Contracts
     {
         Task<FullCompanyProfileViewModel?> GetCompanyProfileAsync(string id);
 
+        Task<int?> GetCompanyId(string id);
+
         Task<UpdateCompanyProfileInputModel?> GetUpdateCompanyProfileAsync(string id);
 
         Task<bool> UpdateCompanyProfileAsync(string id, UpdateCompanyProfileInputModel model);
